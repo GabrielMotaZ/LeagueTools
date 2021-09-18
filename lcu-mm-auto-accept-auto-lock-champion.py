@@ -259,7 +259,8 @@ while True:
                 if action['actorCellId'] != actorCellId:
                     continue
 
-                if action['type'] == "ban":
+                if action['isInProgress']:
+                    if action['type'] == "ban":
                         sleep(2)
                         print('ban')
                         try:
@@ -283,7 +284,6 @@ while True:
                             r = request('post', url+'/complete', '', data)
                             print(r.status_code, r.text)
 
-                if action['isInProgress']:
                     if action['type'] == "pick":
                         print('pick')
                         championId = championsPrio[championIdx2]
