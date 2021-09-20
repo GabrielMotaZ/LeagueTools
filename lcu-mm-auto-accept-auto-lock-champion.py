@@ -304,5 +304,8 @@ while True:
                         if championLock and action['completed'] == False:
                             r = request('post', url+'/complete', '', data)
                             print(r.status_code, r.text)
-    
+
+    elif phase == 'InProgress':
+        break
+
     sleep(2)
