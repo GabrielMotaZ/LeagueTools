@@ -15,6 +15,7 @@ from time import sleep
 import os
 import sys
 from colorama import Fore, Back, Style
+from notify_run import Notify
 
 # Set to your game directory (where LeagueClient.exe is)
 gamedirs = [r'C:\Users\gabri\League of Legends',
@@ -27,17 +28,23 @@ championLock = True
 #  order by preference; script tries to pick the first one first
 #  If empty, does not pick champion, just accepts matchmaking
 championsPrio = [
+    #112, #Viktor
     #350, # Yuumi
-    117, # Lulu
+    10, # Kayle
+    98, # Shen
+    #267, # Nami
+    #12, # Alistar
     #80, # Pantheon
+    #117, # Lulu
 ]
 
 championsBan = [
+    #12, # Alistar
+    85, # Kennen
     25, # Morgana
     111, # Nautilus
     51, # Caitlyn
     117, # Lulu
-    12, # Alistar
 ]
 
 # Set to True to stop script when match starts
@@ -306,6 +313,8 @@ while True:
                             print(r.status_code, r.text)
 
     elif phase == 'InProgress':
+        notify = Notify()
+        notify.send('The League game is in progress now.')
         break
 
     sleep(2)
